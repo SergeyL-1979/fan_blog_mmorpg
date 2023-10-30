@@ -1,0 +1,72 @@
+[
+{
+    "model": "mmorpg.category",
+    "pk": 1,
+    "fields": {
+        "name": "Танки"
+    }
+},
+{
+    "model": "mmorpg.category",
+    "pk": 2,
+    "fields": {
+        "name": "Хилы"
+    }
+},
+{
+    "model": "mmorpg.category",
+    "pk": 3,
+    "fields": {
+        "name": "ДД"
+    }
+},
+{
+    "model": "mmorpg.category",
+    "pk": 4,
+    "fields": {
+        "name": "Торговцы"
+    }
+},
+{
+    "model": "mmorpg.category",
+    "pk": 5,
+    "fields": {
+        "name": "Гилдмастеры"
+    }
+},
+{
+    "model": "mmorpg.category",
+    "pk": 6,
+    "fields": {
+        "name": "Квестгиверы"
+    }
+},
+{
+    "model": "mmorpg.category",
+    "pk": 7,
+    "fields": {
+        "name": "Кузнецы"
+    }
+},
+{
+    "model": "mmorpg.category",
+    "pk": 8,
+    "fields": {
+        "name": "Кожевники"
+    }
+},
+{
+    "model": "mmorpg.category",
+    "pk": 9,
+    "fields": {
+        "name": "Зельевары"
+    }
+},
+{
+    "model": "mmorpg.category",
+    "pk": 10,
+    "fields": {
+        "name": "Мастера"
+    }
+}
+]

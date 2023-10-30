@@ -1,0 +1,82 @@
+{% extends 'default.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %} LIST {% endblock title %}
+
+{% block content %}
+    <div class="text-center mt-4">
+        <h1> {{ time_now|date }}</h1>
+        <p class="lead">Статей на странице: {{ ads_list|length }}</p>
+    </div>
+    <div class="block-left">
+    {% if ads_list %}
+        {% for ad in ads_list %}
+            <article>
+                <!-- Post header-->
+                <header class="mb-4">
+                    <!-- Post title-->
+                    <h1 class="fw-bolder mb-1">{{ ad.title }}</h1>
+                    <!-- Post meta content-->
+                    {% if ad.author == current_user %}
+                        <div class="text-muted fst-italic mb-2">Posted on {{ ad.date_posted|date:'d-M-Y' }}
+                            {{ ad.date_posted|time:"H:i" }} by {{ ad.author }}
+                            <a href="{% url 'mmorpg:ads_edit' ad.pk %}">+ Edit Blog Post</a>|
+                            <a href="{% url 'mmorpg:ads_delete' ad.pk %}">+ Delete Blog Post</a>
+                        </div>
+                    {% else %}
+                        <div class="text-muted fst-italic mb-2">Posted on {{ ad.date_posted|date:'d-M-Y' }}
+                            {{ ad.date_posted|time:'H:i' }} by {{ ad.author }}
+                        </div>
+                    {% endif %}
+                    <!-- Post categories-->
+                    {% for c in ad.category.all %}
+                        <a class="badge bg-secondary text-decoration-none link-light" href="{% url 'mmorpg:category_detail' c.pk %}">{{ c.name }}</a>
+                    {% endfor %}
+                </header>
+                <section class="mb-5">
+                    <p>{{ ad.description|safe|truncatechars:200 }}</p>
+                    <p><a href="{% url 'mmorpg:ads_detail' ad.pk %}">more...</a></p>
+                </section>
+            </article>
+        {% endfor %}
+    {% else %} <!-- Если товаров нет, то говорим что товаров нет ;) -->
+        <h2> {% blocktrans %}Blog is clear{% endblocktrans %}</h2>
+    {% endif %}
+    </div>
+
+    <div class="block-right text-center mt-4">
+            <div class="col-sm-6">
+            <ul class="list-unstyled mb-0">
+                {% for category in categories %}
+                    <li><a href="{% url 'mmorpg:category_detail' category.id %}">{{ category.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        {% for c in categories %}
+        <strong><q><a href="{% url 'mmorpg:category_detail' c.pk %}"> {{ c.name }} </a></q></strong>
+        {% endfor %}
+    </div>
+
+{#    {% if cat_fh or cat_sh %}#}
+{#        <div class="col-sm-6">#}
+{#            <ul class="list-unstyled mb-0">#}
+{#                {% for category in cat_fh %}#}
+{#                    <li><a href="{% url 'mmorpg:category_detail' category.id %}">{{ category.name }}</a></li>#}
+{#                {% endfor %}#}
+{#            </ul>#}
+{#        </div>#}
+{##}
+{#    {% else %} <!-- Если товаров нет, то говорим что товаров нет ;) -->#}
+{#        <h4>Categories not found</h4>#}
+{#    {% endif %}#}
+    {% include "pagination.html" %}
+{% endblock content %}
+{##}
+{#{% block search %}#}
+{#    <form class="input-group " action="{% url 'mmorpg:search_results' %}" method="get">#}
+{#        <input name="q" class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />#}
+{#    </form>#}
+{#{% endblock search %}#}
+
+
