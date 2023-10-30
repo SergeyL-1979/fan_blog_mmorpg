@@ -19,16 +19,16 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from mmorpg.views import HomePageView, AboutPageView, ContactsPageView
+# from mmorpg.views import HomePageView, AboutPageView, ContactsPageView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 
-    path('account/', include('allauth.urls')),
-    path('account/', include(('accounts.urls', 'accounts'), namespace='accounts')),
+    path('accounts/', include('allauth.urls')),
+    # path('account/', include(('accounts.urls', 'accounts'), namespace='accounts')),
 
-    # path('', include(('mmorpg.urls', 'mmorpg'), namespace='mmorpg')),
+    path('', include(('mmorpg.urls', 'mmorpg'), namespace='mmorpg')),
 
     # path('', HomePageView.as_view(), name='home'),
     # path('about/', AboutPageView.as_view(), name='about'),

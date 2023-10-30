@@ -44,18 +44,20 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     # === bootstrap4 ===
-    'crispy_forms',
-    'crispy_bootstrap4',
+    # 'crispy_forms',
+    # 'crispy_bootstrap4',
     # === django-ckeditor ====
     'ckeditor',
     'ckeditor_uploader',
     # ===== Фильтры django-filter ====
     'django_filters',
     # ===== My Apps =====
-    'accounts.apps.UsersConfig',
-    # 'mmorpg.apps.MmorpgConfig',
+    # 'accounts.apps.UsersConfig',
+    'mmorpg.apps.MmorpgConfig',
     # ====================
 ]
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -149,11 +151,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'django_static'),
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
@@ -166,7 +168,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # =============== MY SETTINGS ==================
 SITE_ID = 1
 
-AUTH_USER_MODEL = 'accounts.User'
+# AUTH_USER_MODEL = 'accounts.User'
 
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -227,7 +229,7 @@ ACCOUNT_FORMS = {
 
 
 # CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
-CRISPY_TEMPLATE_PACK = "bootstrap4"
+# CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 # CKEDITOR_IMAGE_BACKEND = {
 #     'ckeditor_uploader.backends.PillowBackend'
