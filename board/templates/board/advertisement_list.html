@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+
+    {% for ad in ads_list %}
+
+        <p>{{ ad.title }}</p>
+        <p>{{ ad.user }}</p>
+        <p><a href="{% url 'category_detail' ad.category.pk %}">{{ ad.category }} </a></p>
+        <p>{{ ad.content|safe }}</p>
+
+    {% endfor %}
+
+{% endblock content %}
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+
+<div class="caption-container">
+    <div class="category">
+        <h3>Категория: {% for pc in post_category %} {{ pc }}, {% endfor %}</h3>
+        <a href="{% url 'ads_list' %}" class="btn btn-light btn-outline-info">Назад</a>
+    </div>
+
+    <div class="content">
+        <h3> Заголовок: <q>{{ ads_detail.title }}</q> </h3>
+        <p><b>Описание объявления:</b> {{ ads_detail.content|safe }} </p>
+
+        &#61;&#61; <em><b>{{ ads_detail.created_at|date:'d M Y'}}</b></em>&#61;&#61;
+        <p>Автор текста: <strong><q>{{ ads_detail.user.first_name }}</q></strong> </p>
+    </div>
+{#    <strong><q>&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;</q></strong>#}
+{#    <p><a href="{% url 'post_update_view' post_detail.id %}" style="text-align: right;"><u>Редактировать пост</u></a></p>#}
+{#    <p><a href="{% url 'post_delete_view' post_detail.id %}" style="text-align: right;"><u> Удалить </u></a></p>#}
+</div>
+<div>
+    <h2> Добавить новый комментарий </h2>
+{#    <form action="" style="text-align: center;" method="post">#}
+{#        {% csrf_token %}#}
+{#        {% for f in forms %}#}
+{#        <p><label class="form-label" for="{{f.ai_for_label}}">{{f.label}}: </label> {{ f }} </p>#}
+{#        <div class="form-error">{{ f.errors }}</div>#}
+{#        {% endfor %}#}
+{#        <input type="submit" value="Submit">#}
+{#    </form>#}
+    <form method="post" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Отправить отклик</button>
+    </form>
+</div>
+
+{% endblock content %}
+</body>
+</html>

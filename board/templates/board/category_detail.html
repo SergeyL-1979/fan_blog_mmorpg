@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+
+    <div class="container">
+    <h2> Все посты из категории <q>{{ category_detail }}</q></h2>
+    </div>
+
+    <div>
+        {% if category_detail %}
+        {% for cat in category_ads %}
+            <p><strong> <a href="{% url 'ads_detail' cat.pk %}"> Заголовок: {{ cat.title }} </a> </strong></p>
+            <p> Текст: {{ cat.content|safe }} </p>
+            <q> Автор: {{ cat.user }} </q>
+            <p>∗ {{ cat.created_at|date:'d M Y h:i' }} ∗ </p>
+            <p><q>&lowast;&lowast;&lowast;</q></p>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+{% endblock content %}
+</body>
+</html>
